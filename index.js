@@ -1,6 +1,14 @@
 document.onreadystatechange = function () {
   if (document.readyState === "interactive") {
-
+    console.log("ready");
+    
+    var button = document.getElementById('first');
+    var rect1 = document.getElementById('rect1');
+    button.onclick = function(){
+      var color = generateColors();
+      console.log(color);
+      rect1.style.fill = color;
+    };
 
   }
 }
@@ -8,19 +16,13 @@ document.onreadystatechange = function () {
 function generateColors(){
   var hue, saturation, lightness, alpha, code;
   hue = generateHue();
-  console.log(hue);
   saturation = generateSat() + '%';
-  console.log(saturation);
   lightness = generateLight() + '%';
-  console.log(lightness)
   alpha = generateAlpha();
-  console.log(alpha);
   code = 'hsla('+ hue + ',' + saturation + ',' + lightness + ',' + alpha + ')';
-  console.log(code)
   return code;
 };
 
-generateColors();
 
 function generateHue(){
   var hueMax = 360; 
