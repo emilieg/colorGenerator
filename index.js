@@ -2,15 +2,29 @@ document.onreadystatechange = function () {
   if (document.readyState === "interactive") {
     console.log("ready");
     
-    var button = document.getElementById('first');
-    var rect1 = document.getElementById('rect1');
-    button.onclick = function(){
-      var color = generateColors();
-      console.log(color);
-      rect1.style.fill = color;
-    };
+    // var button = document.getElementById('first');
+    // var rect1 = document.getElementById('rect1');
+    // button.onclick = function(){
+    //   var color = generateColors();
+    //   console.log(color);
+    //   rect1.style.fill = color;
+    // };
 
+    var buttons = document.getElementsByTagName('button');
+    console.log(buttons);
+    for (var i = 0; i < buttons.length; i++){
+      buttons[i].addEventListener('click', assignColor)
+    }
   }
+}
+
+function assignColor(){
+  console.log("this", this);
+  var buttonNum = this.getAttribute('class');
+  var color = generateColors();
+  var rect = document.getElementById(buttonNum);
+  console.log(buttonNum, rect);
+  rect.style.fill = color;
 }
 
 function generateColors(){
